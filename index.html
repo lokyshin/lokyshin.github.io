@@ -1,273 +1,45 @@
-
 <!DOCTYPE html>
+
 <html lang="zh">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Lokyshin的服务</title>
-    <link rel="icon" href="favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-
-    <style>
-        .card-header-title {
-            font-size: 1.2em;
-        }
-
-        .card {
-            margin-bottom: 2em;
-        }
-    </style>
+<meta charset="utf-8"/>
+<title>Lokyshin</title>
+<link href="favicon.ico" rel="icon"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="stylesheets/normalize.css" media="screen" rel="stylesheet" type="text/css"/>
+<link href="stylesheets/stylesheet.css" media="screen" rel="stylesheet" type="text/css"/>
+<link href="stylesheets/light.css" media="screen" rel="stylesheet" type="text/css"/>
 </head>
-
 <body>
-    <section class="section">
-        <div class="container">
-            <h1 class="title">Lokyshin的服务</h1>
-            <div class="columns is-multiline">
-                <!-- Service cards -->
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">门户</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 门户 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">ssh服务</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 ssh服务 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://ssh.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">Docker</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 Docker 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://docker.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">文件传递</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 文件传递 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://transfer.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">微信服务</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 微信服务 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://lkschatbot.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">网络接入</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 网络接入 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://find.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">Socks服务</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 Socks服务 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://socks.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">Python生存分析与统计工具</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 Python生存分析与统计工具 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://pysurtool.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">R语言生存分析工具</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 R语言生存分析工具 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://survcox.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">Python</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 Python 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://jupyter.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">R</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 R 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://r.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">邮箱</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 邮箱 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://mail.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">Stirling PDF</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 Stirling PDF 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://pdf.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-                <div class="column is-one-third">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">ChatGPT</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                访问 ChatGPT 服务的详细信息。
-                                <br>
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="https://chat.lokyshin.net" class="card-footer-item">访问</a>
-                        </footer>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-</body>
+<section class="page-header">
+<h1>
+        点滴生活，处处精彩
+      </h1>
+<h2>
+        Powered by Lokyshin
+      </h2>
+</section>
+<section class="main-content">
+<h3>
+      总有一些美好</h3><section class="service-category"><h2 class="category-title">服务网址</h2><ul><li><a href="https://ssh.lokyshin.net">ssh服务</a></li><li><a href="https://docker.lokyshin.net">Docker</a></li><li><a href="https://transfer.lokyshin.net">文件传递</a></li><li><a href="https://lkschatbot.lokyshin.net">微信服务</a></li><li><a href="https://find.lokyshin.net">网络接入</a></li><li><a href="https://socks.lokyshin.net">Socks服务</a></li></ul></section><section class="service-category"><h2 class="category-title">编程与统计计算</h2><ul><li><a href="https://pysurtool.lokyshin.net">Python生存分析与统计工具</a></li><li><a href="https://survcox.lokyshin.net">R语言生存分析工具</a></li><li><a href="https://jupyter.lokyshin.net">Python</a></li><li><a href="https://r.lokyshin.net">R</a></li></ul></section><section class="service-category"><h2 class="category-title">工具类</h2><ul><li><a href="https://mail.lokyshin.net">邮箱</a></li><li><a href="https://pdf.lokyshin.net">Stirling PDF</a></li><li><a href="https://chat.lokyshin.net">ChatGPT</a></li></ul></section></section></body></html>
+      值得期待
+      一分钟
+      等云开雾散，日照金山
+      一季秋
+      等稻谷飘香，候鸟飞远
+      一百年
+      世事流转，从执子之手，到万家团圆
+      我常在想
+      人生意义何在
+      徜徉山水的景致
+      陪伴亲人的思念
+      还是
+      双手送出温暖
+      带来笑语欢颜
 
-</html>
+<footer class="site-footer">
+<span class="site-footer-credits">Lokyshin.net</span>
+</footer>
+
+
+
