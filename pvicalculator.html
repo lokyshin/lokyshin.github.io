@@ -1,241 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PVI Calculator</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #e0e0e0, #ffffff); 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PVI Calculator</title>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #e0e0e0, #ffffff);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-        .container {
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-        }
+.container {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
 
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
 
-        p {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
+p {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
 
-        input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
+input {
+    width: 94%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
 
-        button {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+button {
+    width: 30%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+}
 
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
 
-        button:hover:not(:disabled) {
-            background-color: #0056b3;
-        }
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.base-param-info {
+    position: absolute;
+    bottom: 85px;
+    right: 20px;
+    font-size: 12px;
+    text-align: left;
+}
 
-        .popup {
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            max-width: 300px;
-            width: 80%;
-            text-align: left;
-            z-index: 1010;
-        }
+.base-param-info input {
+    width: 50px;
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-        .popup .close {
-            display: block;
-            text-align: right;
-            font-size: 18px;
-            color: #999;
-            cursor: pointer;
-            margin-top: -15px;
-            margin-right: -10px;
-        }
+.base-param-info .tooltip {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 14px;
+    color: #007BFF;
+    cursor: pointer;
+}
 
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 12px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            color: #555;
-        }
+.tooltip-content {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 12px;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 440px;
+    white-space: normal;
+    word-wrap: break-word;
+}
 
-        .footer a {
-            color: #007BFF;
-            text-decoration: none;
-        }
+.tooltip:hover .tooltip-content {
+    display: block;
+}
 
-        .footer a:hover {
-            text-decoration: underline;
-        }
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .reference {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #555;
-        }
+.popup {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 300px;
+    width: 80%;
+    text-align: left;
+    z-index: 1010;
+}
 
-        .reference img {
-            height: 12px;
-            margin: 0 5px;
-        }
+.popup .close {
+    display: block;
+    text-align: right;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+    margin-top: -15px;
+    margin-right: -10px;
+}
 
-        .reference span {
-            white-space: nowrap;
-        }
-    </style>
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #555;
+}
+
+.footer a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.reference {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #555;
+}
+
+.reference img {
+    height: 12px;
+    margin: 0 5px;
+}
+
+.reference span {
+    white-space: nowrap;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>PVI Calculator</h1>
-        <p>Enter a sequence of platelet counts separated by any non-numeric characters.</p>
-        <input type="text" id="plateletInput" placeholder="e.g., 10.5, 16, 48.1, 72">
-        <button id="calculateButton" onclick="calculatePVI()">Calculate PVI</button>
-        <div class="reference">
-            <span>Tool development based on:</span>
-	    <a href="https://ashpublications.org/bloodadvances/article/5/20/4256/476875/Platelet-variability-index-a-measure-of-platelet" target="_blank">
-                <img src="https://ash.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bloodadvances/blood-advances-banner-118040457.svg" alt="Blood Advances">
-            </a>
-    </div>
-    <div class="footer">
-        Powered by <a href="https://lokyshin.net" target="_blank">Lokyshin.net</a>
-    </div>
+<div class="container">
+<h1>PVI Calculator</h1>
+<p>Enter a sequence of platelet counts separated by any non-numeric characters.</p>
+<input type="text" id="plateletInput" placeholder="e.g., 10.5, 16, 48.1, 72">
+<button id="calculateButton" onclick="calculate()">Calculate</button>
 
-    <script>
-        function setRandomGradient() {
-            const angle = Math.floor(Math.random() * 360); 
-            document.body.style.background = `linear-gradient(${angle}deg, #e0e0e0, #ffffff)`;
-        }
+<div class="base-param-info">
+    <span>p =</span>
+    <input type="number" id="baseParamInput" placeholder="0.8" step="0.01" min="0" max="1" oninput="validateBaseParam()">
+    <span class="tooltip">?
+        <span class="tooltip-content">
+            Default: 0.8.<br>The base parameter for a general exponential function of the lowest platelet count, where 0 &lt; p &lt; 1.
+        </span>
+    </span>
+</div>
 
-        setRandomGradient();
+<div class="reference">
+    <span>Tool development based on:</span>
+    <a href="https://ashpublications.org/bloodadvances/article/5/20/4256/476875/Platelet-variability-index-a-measure-of-platelet" target="_blank">
+        <img src="https://ash.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bloodadvances/blood-advances-banner-118040457.svg" alt="Blood Advances">
+    </a>
+</div>
+<div class="footer">
+    Powered by <a href="https://lokyshin.net" target="_blank">Lokyshin.net</a>
+</div>
+</div>
 
-        function calculatePVI() {
-            const input = document.getElementById("plateletInput").value;
-            const plateletCounts = input.split(/[^0-9.]+/).map(Number).filter(num => !isNaN(num));
+<script>
+function validateBaseParam() {
+    const baseParamInput = document.getElementById("baseParamInput");
+    let baseParam = parseFloat(baseParamInput.value);
+    if (isNaN(baseParam) || baseParam <= 0 || baseParam >= 1) {
+        baseParamInput.value = "0.8";
+    }
+}
 
-            if (plateletCounts.length === 0) {
-                alert("Invalid input. Please enter a valid sequence of numbers.");
-                return;
-            }
+function calculate() {
+    const baseParamInput = document.getElementById("baseParamInput");
+    let baseParam = parseFloat(baseParamInput.value);
 
-            const baseParam = 0.8;
-            const epsilon = 1e-10;
-            const n = plateletCounts.length;
+    if (isNaN(baseParam) || baseParam <= 0 || baseParam >= 1) {
+        baseParam = 0.8;
+    }
 
-            if (n === 0) {
-                alert("The list of platelet counts cannot be empty.");
-                return;
-            }
+    const input = document.getElementById("plateletInput").value;
+    const plateletCounts = input.split(/[^0-9.]+/).map(Number).filter(num => !isNaN(num));
 
-            const lowestCount = Math.min(...plateletCounts);
-            const severity = Math.pow(baseParam, lowestCount);
+    if (plateletCounts.length === 0) {
+        alert("Invalid input. Please enter a valid sequence of numbers.");
+        return;
+    }
 
-            let pviIndex, pviScore;
+    const epsilon = 1e-10;
+    const n = plateletCounts.length;
+    const lowestCount = Math.min(...plateletCounts);
+    const severity = Math.pow(baseParam, lowestCount);
 
-            if (n <= 2) {
-                pviIndex = Math.log(severity + epsilon);
-            } else {
-                const avgPlatelet = plateletCounts.reduce((a, b) => a + b, 0) / n;
-                const ssd = plateletCounts.reduce((sum, x) => sum + Math.pow(x - avgPlatelet, 2), 0);
-                const firstDiffs = plateletCounts.slice(1).map((x, i) => x - plateletCounts[i]);
-                const rssDiff = Math.sqrt(firstDiffs.reduce((sum, x) => sum + x * x, 0));
-                const fluctuation = Math.sqrt(ssd) * rssDiff;
-                pviIndex = Math.log(severity * fluctuation + epsilon);
-            }
+    let pviIndex, pviScore;
 
-            if (pviIndex <= -10) {
-                pviScore = 0;
-            } else if (pviIndex <= -5) {
-                pviScore = 1;
-            } else if (pviIndex <= 0) {
-                pviScore = 2;
-            } else if (pviIndex <= 5) {
-                pviScore = 3;
-            } else if (pviIndex <= 8) {
-                pviScore = 4;
-            } else if (pviIndex <= 12) {
-                pviScore = 5;
-            } else {
-                pviScore = 6;
-            }
+    if (n <= 2) {
+        pviIndex = Math.log(severity + epsilon);
+    } else {
+        const avgPlatelet = plateletCounts.reduce((a, b) => a + b, 0) / n;
+        const ssd = plateletCounts.reduce((sum, x) => sum + Math.pow(x - avgPlatelet, 2), 0);
+        const firstDiffs = plateletCounts.slice(1).map((x, i) => x - plateletCounts[i]);
+        const rssDiff = Math.sqrt(firstDiffs.reduce((sum, x) => sum + x * x, 0));
+        const fluctuation = Math.sqrt(ssd) * rssDiff;
+        pviIndex = Math.log(severity * fluctuation + epsilon);
+    }
 
-            const overlay = document.createElement("div");
-            overlay.className = "overlay";
-            overlay.innerHTML = `
-                <div class="popup">
-                    <span class="close" onclick="closePopup()">×</span>
-                    <strong>Results:</strong><br>
-                    PVI Index: ${pviIndex}<br>
-                    PVI Score: ${pviScore}
-                </div>
-            `;
-            document.body.appendChild(overlay);
-            document.getElementById("calculateButton").disabled = true;
-        }
+    if (pviIndex <= -10) {
+        pviScore = 0;
+    } else if (pviIndex <= -5) {
+        pviScore = 1;
+    } else if (pviIndex <= 0) {
+        pviScore = 2;
+    } else if (pviIndex <= 5) {
+        pviScore = 3;
+    } else if (pviIndex <= 8) {
+        pviScore = 4;
+    } else if (pviIndex <= 12) {
+        pviScore = 5;
+    } else {
+        pviScore = 6;
+    }
 
-        function closePopup() {
-            const overlay = document.querySelector(".overlay");
-            if (overlay) overlay.remove();
-            document.getElementById("calculateButton").disabled = false;
-        }
-    </script>
+    const overlay = document.createElement("div");
+    overlay.className = "overlay";
+    overlay.innerHTML = `
+        <div class="popup">
+            <span class="close" onclick="closePopup()">×</span>
+            <strong>Results</strong><br><br>
+            The base parameter is ${baseParam} .<br>
+            PVI Index: ${pviIndex}<br>
+            PVI Score: ${pviScore}
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    document.getElementById("calculateButton").disabled = true;
+}
+
+function closePopup() {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) overlay.remove();
+    document.getElementById("calculateButton").disabled = false;
+}
+</script>
 </body>
 </html>
